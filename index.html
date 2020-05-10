@@ -8,37 +8,51 @@
     <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
-    <div class="body">
-        <div class="body-first">
-            <div class="wordToGuessContainer">
-                <h1 class="score">SCORE: </h1>
-                <h1 class="wordToGuessLable">WORD TO GUESS</h1>
-                <div class="letter-container">
-                
+    <div class="big-container">
+        
+        <div class="game-container">
+            
+            <div class="body-first">
+                <div class="wordToGuessContainer">
+                    
+                    <h1 class="wordToGuessLable">GUESS THE WORD</h1>
+                    <div class="letter-container">
+                    
+                    </div>
+                </div>  
+                <div class = "slidecontainer">
+                    <div class="points-container">
+                        <div>
+                            <p class="p">Num of letters:</p>
+                            <p class="points"></p>
+                        </div>
+                        <input type="range" min="5" max="10" value="5" class="slider" id="myRange">
+                    </div>
+                    <div class="scoreContainer">
+                        <h1 class="scoreTxt">SCORE: </h1>
+                        <h1 class="score"></h1>
+                    </div>
                 </div>
-            </div>  
-            <div class = "slidecontainer">
-                <div class="points-container">
-                    <p class="p">Num of letters</p>
-                    <p class="points"></p>
-                </div>
-                <input type="range" min="5" max="10" value="5" class="slider" id="myRange">
+            </div>
+            <div class="body-second">
+            <h1 class="inputLetters"></h1>
+            <div> 
+                <input class="guessTheWordInput" type="text">
+                <img class="tick"src="tick.png" hidden/>
+                <img class="cross"src="cross.png" hidden/>
+            </div>
+                <p class="empty" hidden>CAN'T BE EMPTY!</p>
+                <button href="#" class="checkButtonc checkButton">CHECK!</button>
+                <button class="generateButtonc generateWord">GENERATE</button>
+                <!--<button class="checkButton" type="button">CHECK!</button>-->
+                <!--<button class="generateWord" type="button">Generate!</button>-->
             </div>
         </div>
-        <div class="body-second">
-           <div> 
-            
-            <input class="guessTheWordInput" type="text">
-            <img class="tick"src="tick.png" hidden/>
-          </div>
-            <p class="empty" hidden>EMPTY!</p>
-            <a href="#" class="checkButtonc checkButton">CHECK!</a>
-            <a href="#" class="generateButtonc generateWord">GENERATE</a>
-            <!--<button class="checkButton" type="button">CHECK!</button>-->
-            <!--<button class="generateWord" type="button">Generate!</button>-->
+        <div class="help-container">
+
         </div>
+        
     </div>
-    
     <script src="./app.js"></script>
 </body>
 </html>

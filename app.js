@@ -8,50 +8,11 @@ let wordInput = document.querySelector('.guessTheWordInput');
 let letterContainerDIV = document.querySelector('.letter-container');
 let pointsText = document.querySelector('.points');
 let slider = document.querySelector('.slider');
-scoreElement.innerText="Score: " + score;
+scoreElement.innerText = score;
 let emptyWord = document.querySelector('.empty');
 let tickImg = document.querySelector('.tick');
-
-let words = ['deliver',
-'meddle',
-'planes'
-,'permissible'
-,'spotty'
-,'impolite'
-,'whimsical'
-,'suck'
-,'conscious'
-,'lunchroom'
-,'pray'
-,'crowded'
-,'mind'
-,'frantic'
-,'accidental'
-,'historical'
-,'cheerful'
-,'substance'
-,'smiling'
-,'wide'
-,'damage'
-,'fretful'
-,'chilly'
-,'broken'
-,'adventurous'
-,'guide'
-,'bustling'
-,'petite'
-,'promise'
-,'excellent'
-,'pale'
-,'play'
-
-,'corn'
-,'hospital'
-,'dog'
-,'tested'
-,'whip'
-,'dramatic'
-,'womanly'];
+let crossImg = document.querySelector('.cross');
+let words = [];
 let checkButton = document.querySelector('.checkButton');
 checkButton.disabled = true;
 let generateButton = document.querySelector('.generateWord');
@@ -59,13 +20,23 @@ let correctWord = "";
 pointsText.innerText = slider.value;
 //Event Listeners
 
-document.addEventListener('DOMContentLoaded',fillLetters('welcome'));
 
+document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
+document.addEventListener('DOMContentLoaded',fillLetters('welcome'));
 
 slider.addEventListener('click',type);
 generateButton.addEventListener('click',generateWord);
 checkButton.addEventListener('click',checkWord);
 wordInput.addEventListener('click',empty);
+wordInput.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      checkButton.click();
+    }
+  });
 
 //todoList.addEventListener('click', deleteCheck);
 //filterOption.addEventListener('click', filterTodo);
@@ -135,6 +106,7 @@ function clearBox(){
     letterContainerDIV.innerHTML= "";
 }
 
+/*REFERENCE
 function reference(){
     const todoDiv = document.createElement('div');
     todoDiv.classList.add("todo");
@@ -167,11 +139,73 @@ function reference(){
     //Clear Todoinput value
     todoInput.value="";
 }
+*/
 
+/*REFERENCE
+fetch(api)
+    .then(data =>{
+        return data.json();
+    })
+    .then(data =>{
+        console.log(data);
+        const {temp,feels_like} = data.main;
+        const {description,main} = data.weather[0];
+        let {name} = data;
+        //Set DOM elements from the API
+        tempToC = temp - 273.15;
+        feels_likeToC = feels_like - 273.15;
+        temperatureDegree.textContent = tempToC.toPrecision(3);
+        temperatureDescription.textContent = "Feels like: " + feels_likeToC.toPrecision(3);
+        console.log(name);
+        locationTimezone.textContent = name;
+    })
+});
+*/
+
+
+//Generates random words from API 
+async function getRandomWords(){
+    //url for request
+    let numOfWords = 100;
+    let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
+
+    //Gets request and returns in Array at json
+    const response = await fetch(url);
+    const json = await response.json();
+    //console.log(json);
+    words = json;
+
+    // let wordsArray = fetch(url)
+    // .then(data =>{
+    //     return data.json();
+    // })
+    // .then(data =>{
+    //     wordsReturned = data;
+    //     console.log(wordsReturned);
+    //     console.log(wordsReturned[1]);
+    // });
+    //console.log(wordsReturned);
+    
+    return json;
+}
+
+//Assigns the randomGenerated words to words list
+function assignWordsList(wordsReturnedd){
+    words = wordsReturnedd;
+    return words;
+}
+
+//Gets the words and checks for length
+//Picks a random word from words array and displays
 function generateWord(){
     checkButton.disabled = false;
+
+    //let wordsGenerated = getRandomWords();
+    //console.log(words);
+
+
     let sliderValue = slider.value;
-    console.log(slider.value)
+    //console.log(slider.value)
     let wordsPicked = [];
     let indexJashtem = 0;
     for (let i = 0; i < words.length; i++) {
@@ -181,30 +215,24 @@ function generateWord(){
             
         }
     }
+    //wordsPicked = words;
 
-    console.log(wordsPicked);
-
-
+    //console.log(wordsPicked);
     let random = Math.round(Math.random() * (wordsPicked.length-1));
-    wordToShuffle = wordsPicked[random];
+    //return back to random
+    wordToShuffle = wordsPicked[0];
     correctWord = wordToShuffle;
     wordToShuffle.shuffle();
-    console.log(wordToShuffle)
+    //console.log(wordToShuffle)
     for (let index = 0; index > wordToShuffle.length; index++) {
         wordToShuffle = wordToShuffle.charAt(index) + " ";
         
     }
 
     fillLetters(wordToShuffle);
-
     //wordToGuess.textContent = wordToShuffle;
-    
-    
     wordInput.value = "";
     //console.log(wordToDisplay)
-    
-
-
 }
 
 function clear(){
@@ -225,7 +253,12 @@ function checkWord(){
         foul=0;
     }else{
         console.log('TRY AGAIN');
-        
+        crossImg.hidden=false;
+        //adds a eventListener to the element and checks when the element 
+        //Animation ends
+        crossImg.addEventListener('animationend',function(){
+            crossImg.hidden=true;
+        })
         if(wordInput.value===""){
             emptyWord.hidden = false;
         }
@@ -236,8 +269,10 @@ function checkWord(){
         wordInput.value ="";
     }
     
-    scoreElement.textContent = score;
+    document.querySelector('.score').innerHTML = score;
+    wordInput.select();
     clear();
+    
 }
 
 /*

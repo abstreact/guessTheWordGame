@@ -6,47 +6,68 @@
 }
 
 body{
+    display: flex;
+    top: 0; right: 0; bottom: 0; left: 0;
     font-family: "Poppins", sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8abad3+0,77b3d1+50,8abad3+50,7db9e8+100 */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8abad3+0,7db9e8+100 */
+    background: #8abad3; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #8abad3 0%, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  #8abad3 0%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  #8abad3 0%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
-.body{
+.big-container{
     display: flex;
+    margin-top: 15vh;
+    background-color: blue;
     background-color: #8ABAD3ff;
-    height: 1500px;
-    width: 100%;
-    
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8abad3+0,77b3d1+50,8abad3+50,7db9e8+100 */
-/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8abad3+0,7db9e8+100 */
-background: #8abad3; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover,  #8abad3 0%, #7db9e8 100%); /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover,  #8abad3 0%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center,  #8abad3 0%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+    box-shadow: 0 0 1px black, 0 0 20px black;
 }
 
 @keyframes divFade{
     0% {
         opacity: 0;
-        top: 100px;
-        width: 500px;
-        height: 300px;
       }
       
       100% {
         opacity: 1;
-        top: 0px;
       }
 }
 
-.body-first, .body-second{
+.game-container{
+    position: relative;
+    height: 500px;
+    width: 70%;
+
+}
+
+.help-container{
+    position: relative;
+    height: 500px;
+    width: 30%;
+    background-color: lightblue;
+
+}
+
+.body-first, .body-second .help-container{
+}
+
+.body-first, .body-second, .help-container{
     animation-name: divFade;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: ease;
     max-width: 1900px;
+    
 }
 
 .body-first{
@@ -54,11 +75,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     position: relative;
     background-color: #EDC2D8FF;
     flex-direction: column;
-    height: 400px;
-    width: 80%;  
+    height: 45%;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 1px black, 0 0 20px black;
+
     
 }
 
@@ -66,32 +86,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     display: flex;
     position: relative;
     background-color: #FCF6f5ff;
-    height: 500px;
-    width: 80%;  
+    height: 55%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 1px black, 0 0 20px black;
 }
 
 .wordToGuessLable{
-    font-size: 50px;
+    font-size: 30px;
     color: mintcream;
+    padding-top: 20px;
 }
 
 .wordToGuess{
     border:black;
     padding-top: 70px;
-    font-size: 50px;
+    font-size: 25px;
     color: mintcream;
 }
 
 
 .guessTheWordInput{
-    font-size: 75px;
-    width: 500px;
-    height: 100px;
-
+    font-size: 45px;
+    width: 250px;
+    height: 50px;
 }
 
 
@@ -108,7 +126,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 400px;
+    height: 100px;
     flex-basis: 80%;
     justify-content: center;
     align-items: center;
@@ -117,12 +135,79 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 
 .slidecontainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: 400px;
     flex-basis: 20%;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
+}
+
+.slider{
+    height: 50%;
+    width: 120px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.points-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.points-container div{
+    display: flex;
+    flex-direction: row;
+}
+
+.scoreContainer{
+    display: inline;
+    margin-left: -20px;
+    width: 50%;
+
+}
+
+@keyframes zoomIn{
+    0%{
+        opacity: 0;
+        bottom: 40px;
+        
+    }100%{
+        bottom: 0px;
+        opacity: 1;
+    }
+}
+
+.scoreTxt{
+    display: inline;
+
+}
+.score{
+    display: inline;
+    position: relative;
+    animation-name: zoomIn;
+    animation-duration: 1.4s;
+}
+
+.points{
+    height: 50%;
+    width: 60%;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: -20px;
+}
+
+.p{
+    width: 30%;
+    height: 50%;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 9px;
 }
 
 
@@ -151,11 +236,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 
 .letter{
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     position: relative;
     opacity: 0.9;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     margin-left: 5px;
     margin-right: 5px;
     pointer-events:none;
@@ -163,28 +248,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     animation-duration: 1.4s;
 }
 
-.slider{
-    width: 300px;
-    margin-left: 40px;
-    padding: 20px;
-}
 
-.points-container{
-    display: flex;
-}
-
-.points{
-    font-size: 20px;
-    font-weight: bolder;
-    text-align: left;
-    margin-left: 20px;
-}
-
-.p{
-    text-align: left;
-    font-weight: bold;
-    font-size: 20px;
-}
 
 @keyframes emptys{
     0%{
@@ -199,9 +263,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 
 .empty{
     color: red;
-    font-size: 23px;
+    font-size: 13px;
     font-weight: bolder;
-    margin-bottom: -25px;
+    margin-bottom: -20px;
     animation-name: emptys;
     animation-duration: 1.4s;
 }
@@ -220,21 +284,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
       }
 }
 
+
 .tick{
     position: absolute;
-    width: 70px;
+    width: 45px;
     animation-name: tickFade;
     animation-duration: 1.5s;
 }
 
-
+.cross{
+    position: absolute;
+    width: 45px;
+    animation-name: tickFade;
+    animation-duration: 1.5s;
+}
 
 .checkButtonc {
 	box-shadow: 2px 3px 6px -2px #caefab;
 	background-color:transparent;
     border-radius:17px;
-    height: 70px;
-    width: 270px;
+    height: 50px;
+    width: 180px;
     text-align: center;
     margin-top: 30px;
 	border:3px solid #268a16;
@@ -242,9 +312,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 	cursor:pointer;
 	color:#306108;
 	font-family:Arial;
-	font-size:30px;
+	font-size:20px;
 	font-weight:bold;
-	padding:12px 45px;
+    padding-top: 10px;
 	text-decoration:none;
 }
 .checkButtonc:hover {
@@ -267,7 +337,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 	cursor:pointer;
 	color:#4c71a1;
 	font-family:Arial;
-	font-size:20px;
+	font-size:12px;
 	font-weight:bold;
 	padding:11px 28px;
 	text-decoration:none;

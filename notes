@@ -7,3 +7,19 @@ If you want all the stored words:
 
 /all
 https://random-word-api.herokuapp.com/word?number=10
+
+OXFORD DICTIONARIES 
+https://developer.oxforddictionaries.com/documentation
+key: 7a42884c	
+base url: https://od-api.oxforddictionaries.com/api/v2
+
+Add definitions for words
+Add synonyms or antonyms for the word
+divide with points for ex
+definitions 1point
+antonyms 1||2 points
+synonyms 3 points
+sentence 4 points
+
+fetch API docs
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
