@@ -1,0 +1,214 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+.body{
+    display: flex;
+    background-color: #8ABAD3ff;
+    height: 1500px;
+    width: 100%;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8abad3+0,77b3d1+50,8abad3+50,7db9e8+100 */
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8abad3+0,7db9e8+100 */
+background: #8abad3; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #8abad3 0%, #7db9e8 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  #8abad3 0%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  #8abad3 0%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.body-first{
+    display: flex;
+    background-color: #EDC2D8FF;
+    flex-direction: column;
+    height: 400px;
+    width: 80%;  
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1px black, 0 0 20px black;
+}
+
+.body-second{
+    display: flex;
+    background-color: #FCF6f5ff;
+    height: 500px;
+    width: 80%;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1px black, 0 0 20px black;
+}
+
+.wordToGuessLable{
+    font-size: 50px;
+    color: mintcream;
+}
+
+.wordToGuess{
+    border:black;
+    padding-top: 70px;
+    font-size: 50px;
+    color: mintcream;
+}
+
+
+.guessTheWord{
+    font-size: 75px;
+    width: 500px;
+    height: 100px;
+
+}
+
+
+
+.checkButton{
+    margin-top: 50px;
+    font-size: 45px;
+    width: 320px;
+    height: 120px;
+    color: white;
+    background:  olivedrab;
+    outline-style: solid;
+}
+
+.difficulty{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+}
+
+.wordToGuessContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+    flex-basis: 80%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slidecontainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+    flex-basis: 20%;
+    justify-content: center;
+    text-align: center;
+}
+
+.generateWord{
+    margin-top: 50px;
+    font-size: 35px;
+    width: 220px;
+    height: 50px;
+    color: white;
+    background:  darkgreen;
+    outline-style: solid;
+}
+
+.letter-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    height: 100px;
+    width: 1000px;
+        
+}
+
+@keyframes fadein{
+    0%{
+        opacity: 0;
+        bottom: 40px;
+        
+    }100%{
+        bottom: 0px;
+        opacity: 0.9;
+    }
+}
+
+.letter{
+    text-align: center;
+    font-size: 50px;
+    position: relative;
+    opacity: 0.9;
+    height: 100px;
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    pointer-events:none;
+    animation-name: fadein;
+    animation-duration: 1.4s;
+}
+
+.slider{
+    width: 300px;
+    margin-left: 40px;
+    padding: 20px;
+}
+
+.points{
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.p{
+    text-align: left;
+}
+
+@keyframes emptys{
+    0%{
+        opacity: 0;
+        
+        
+    }100%{
+        
+        opacity: 0.9;
+    }
+}
+
+.empty{
+    color: red;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-bottom: -25px;
+    animation-name: emptys;
+    animation-duration: 1.4s;
+}
+
+@keyframes tickFade{
+    0% {
+        opacity: 0;
+      }
+      
+      50% {
+        opacity: 1;
+      }
+    
+      100% {
+        opacity: 0;
+      }
+}
+
+.tick{
+    position: absolute;
+    width: 70px;
+    animation-name: tickFade;
+    animation-duration: 1.5s;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    <div class="body">
+        <div class="body-first">
+            <div class="wordToGuessContainer">
+                <h1 class="score">SCORE: </h1>
+                <h1 class="wordToGuessLable">WORD TO GUESS</h1>
+                <div class="letter-container">
+                
+                </div>
+            </div>  
+            <div class = "slidecontainer">
+                <p class="p">Num of letters</p>
+                <p class="points"></p>
+                <input type="range" min="5" max="10" value="5" class="slider" id="myRange">
+            </div>
+        </div>
+        <div class="body-second">
+           <div> 
+            
+            <input class="guessTheWord" type="text">
+            <img class="tick"src="tick.png" hidden/>
+          </div>
+            <p class="empty" hidden>EMPTY!</p>
+            <button class="checkButton" type="button">CHECK!</button>
+            <button class="generateWord" type="button">Generate!</button>
+        </div>
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
