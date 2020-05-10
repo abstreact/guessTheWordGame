@@ -28,8 +28,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 
 }
 
+@keyframes divFade{
+    0% {
+        opacity: 0;
+        top: 100px;
+        width: 500px;
+        height: 300px;
+      }
+      
+      100% {
+        opacity: 1;
+        top: 0px;
+      }
+}
+
+.body-first, .body-second{
+    animation-name: divFade;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    max-width: 1900px;
+}
+
 .body-first{
     display: flex;
+    position: relative;
     background-color: #EDC2D8FF;
     flex-direction: column;
     height: 400px;
@@ -37,10 +59,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 1px black, 0 0 20px black;
+    
 }
 
 .body-second{
     display: flex;
+    position: relative;
     background-color: #FCF6f5ff;
     height: 500px;
     width: 80%;  
@@ -63,7 +87,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 }
 
 
-.guessTheWord{
+.guessTheWordInput{
     font-size: 75px;
     width: 500px;
     height: 100px;
@@ -72,15 +96,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
 
 
 
-.checkButton{
-    margin-top: 50px;
-    font-size: 45px;
-    width: 320px;
-    height: 120px;
-    color: white;
-    background:  olivedrab;
-    outline-style: solid;
-}
 
 .difficulty{
     display: flex;
@@ -110,24 +125,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     text-align: center;
 }
 
-.generateWord{
-    margin-top: 50px;
-    font-size: 35px;
-    width: 220px;
-    height: 50px;
-    color: white;
-    background:  darkgreen;
-    outline-style: solid;
-}
+
 
 .letter-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    
     margin-top: 30px;
     height: 100px;
     width: 1000px;
-        
+    
 }
 
 @keyframes fadein{
@@ -161,15 +169,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     padding: 20px;
 }
 
+.points-container{
+    display: flex;
+}
+
 .points{
     font-size: 20px;
     font-weight: bolder;
     text-align: left;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .p{
     text-align: left;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 @keyframes emptys{
@@ -211,4 +225,58 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8abad3', end
     width: 70px;
     animation-name: tickFade;
     animation-duration: 1.5s;
+}
+
+
+
+.checkButtonc {
+	box-shadow: 2px 3px 6px -2px #caefab;
+	background-color:transparent;
+    border-radius:17px;
+    height: 70px;
+    width: 270px;
+    text-align: center;
+    margin-top: 30px;
+	border:3px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:30px;
+	font-weight:bold;
+	padding:12px 45px;
+	text-decoration:none;
+}
+.checkButtonc:hover {
+	background-color:transparent;
+}
+.checkButtonc:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+.generateButtonc {
+    box-shadow:inset 0px 1px 4px 0px #bee2f9;
+    margin-top: 25px;
+	background-color:transparent;
+	border-radius:17px;
+	border:3px solid #3866a3;
+	display:inline-block;
+	cursor:pointer;
+	color:#4c71a1;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:11px 28px;
+	text-decoration:none;
+	text-shadow:0px 0px 2px #7cacde;
+}
+.generateButtonc:hover {
+	background-color:transparent;
+}
+.generateButtonc:active {
+	position:relative;
+	top:1px;
 }

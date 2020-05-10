@@ -1,0 +1,9 @@
+API per random words. number 10 = num of words
+You can toggle swear words on/off (0/1) with the filter
+
+/?swear=0
+
+If you want all the stored words:
+
+/all
+https://random-word-api.herokuapp.com/word?number=10

@@ -4,7 +4,7 @@ let foul = 0;
 let isCorrect = false;
 let scoreElement = document.querySelector('.score');
 let wordToGuess = document.querySelector('.wordToGuess');
-let wordInput = document.querySelector('.guessTheWord');
+let wordInput = document.querySelector('.guessTheWordInput');
 let letterContainerDIV = document.querySelector('.letter-container');
 let pointsText = document.querySelector('.points');
 let slider = document.querySelector('.slider');
@@ -44,7 +44,7 @@ let words = ['deliver',
 ,'excellent'
 ,'pale'
 ,'play'
-,'rings'
+
 ,'corn'
 ,'hospital'
 ,'dog'
@@ -229,7 +229,7 @@ function checkWord(){
         if(wordInput.value===""){
             emptyWord.hidden = false;
         }
-        if(wordInput.value!==""){
+        if(wordInput.value!=="" && score>0){
             score--;
         }
         foul++;
