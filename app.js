@@ -18,10 +18,11 @@ checkButton.disabled = true;
 let generateButton = document.querySelector('.generateWord');
 let correctWord = "";
 pointsText.innerText = slider.value;
+let inputContainer = document.querySelector('.input-container');
 //Event Listeners
 
-
-document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
+document.addEventListener('DOMContentLoaded',assignWordsList());
+//document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
 document.addEventListener('DOMContentLoaded',fillLetters('welcome'));
 
 slider.addEventListener('click',type);
@@ -98,9 +99,59 @@ function fillLetters(word){
     leTT.addEventListener('animationend',function(){
         tickImg.hidden=true;
     })
-
-    
 }
+
+function fillAnswer(word){
+    let wordLength = word.length;
+    clearBox();
+
+    // <div class="body-second">
+    //             <form class="input-container">
+    //                 <input class="inputLetters" maxlength = "1"></input>
+
+    if(isCorrect === false){
+        for (let index = 0; index < wordLength-1; index++) {
+            const createInput = document.createElement('input');
+            createInput.setAttribute("maxlength", "1");
+            createInput.setAttribute("class", "inputLetters");
+            inputContainer.appendChild(createInput);
+        }
+
+        const createInput = document.createElement('input');
+        createInput.setAttribute("maxlength", "1");
+        createInput.setAttribute("class", "inputLetters");
+        inputContainer.appendChild(createInput);
+        
+        const getLetters = document.getElementsByClassName("inputLetters");
+
+        
+        //Gjenerimi numrave Random per sa shkronja me i plotsu
+        //console.log(getLetters[index].innerText = word.charAt(index));
+        const nums = pick(getLetters.length/2, 0, getLetters.length-1);
+        //console.log(nums);
+        for (let index = 0; index < getLetters.length; index++) {
+            if(nums.includes(index)){
+                getLetters[index].value = word.charAt(index);
+            }
+        }
+    }
+}
+
+//Generates random num of numbers
+function pick(n, min, max){
+    var values = [], i = max;
+    while(i >= min) values.push(i--);
+    var results = [];
+    var maxIndex = max;
+    for(i=1; i <= n; i++){
+        maxIndex--;
+        var index = Math.floor(maxIndex * Math.random());
+        results.push(values[index]);
+        values[index] = values[maxIndex];
+    }
+    return results;
+}
+
 
 function clearBox(){
     letterContainerDIV.innerHTML= "";
@@ -166,14 +217,16 @@ fetch(api)
 //Generates random words from API 
 async function getRandomWords(){
     //url for request
-    let numOfWords = 100;
-    let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
 
-    //Gets request and returns in Array at json
-    const response = await fetch(url);
-    const json = await response.json();
-    //console.log(json);
-    words = json;
+    //UNCOMMENT FOR API WORDS
+    // let numOfWords = 100;
+    // let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
+
+    // //Gets request and returns in Array at json
+    // const response = await fetch(url);
+    // const json = await response.json();
+    // //console.log(json);
+    // words = json;
 
     // let wordsArray = fetch(url)
     // .then(data =>{
@@ -188,10 +241,55 @@ async function getRandomWords(){
     
     return json;
 }
-
+//UNCOMMENT FOR API WORDS
 //Assigns the randomGenerated words to words list
-function assignWordsList(wordsReturnedd){
-    words = wordsReturnedd;
+// function assignWordsList(wordsReturnedd){
+//     words = wordsReturnedd;
+//     return words;
+// }
+
+//
+function assignWordsList(){
+    words = ['deliver',
+    'meddle',
+    'planes'
+    ,'permissible'
+    ,'spotty'
+    ,'impolite'
+    ,'whimsical'
+    ,'suck'
+    ,'conscious'
+    ,'lunchroom'
+    ,'pray'
+    ,'crowded'
+    ,'mind'
+    ,'frantic'
+    ,'accidental'
+    ,'historical'
+    ,'cheerful'
+    ,'substance'
+    ,'smiling'
+    ,'wide'
+    ,'damage'
+    ,'fretful'
+    ,'chilly'
+    ,'broken'
+    ,'adventurous'
+    ,'guide'
+    ,'bustling'
+    ,'petite'
+    ,'promise'
+    ,'excellent'
+    ,'pale'
+    ,'play'
+    ,'rings'
+    ,'corn'
+    ,'hospital'
+    ,'dog'
+    ,'tested'
+    ,'whip'
+    ,'dramatic'
+    ,'womanly'];
     return words;
 }
 
@@ -220,7 +318,7 @@ function generateWord(){
     //console.log(wordsPicked);
     let random = Math.round(Math.random() * (wordsPicked.length-1));
     //return back to random
-    wordToShuffle = wordsPicked[0];
+    wordToShuffle = wordsPicked[random];
     correctWord = wordToShuffle;
     wordToShuffle.shuffle();
     //console.log(wordToShuffle)
@@ -229,6 +327,8 @@ function generateWord(){
         
     }
 
+    inputContainer.innerHTML="";
+    fillAnswer(wordToShuffle);
     fillLetters(wordToShuffle);
     //wordToGuess.textContent = wordToShuffle;
     wordInput.value = "";
