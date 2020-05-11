@@ -1,6 +1,7 @@
 //SELECTORS
 let score = 0;
 let foul = 0;
+let countNext = 0;
 let isCorrect = false;
 let scoreElement = document.querySelector('.score');
 let wordToGuess = document.querySelector('.wordToGuess');
@@ -149,14 +150,18 @@ function fillAnswer(word){
 
 function moveToNextInput(){
     let activeElement = document.activeElement
-    //if(activeElement.attributes)
     //let nextElement = querySelector('input[]');
     let activeId = activeElement.attributes[3];
-    console.log(activeId)
-    let nextLetter = document.getElementById(""+activeId)
-    nextLetter.select();
+    console.log(activeId.value)
+    //document.getElementById("2");
+    countNext = parseInt(activeId.value) + 1;
+    console.log(countNext);
     // let nextElement = querySelector('inputLetters[0].attributes[3]');
     //let nextElement = inputLetters[0].attributes[3];
+    //console.log(countNext)
+    const input = document.getElementById(countNext);
+    input.focus();
+    input.select();
     console.log(activeElement.attributes[3]);
     //console.log(nextElement);
 }
