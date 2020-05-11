@@ -22,49 +22,49 @@ pointsText.innerText = slider.value;
 let inputContainer = document.querySelector('.input-container');
 let inputLetters = document.getElementsByClassName("inputLetters");
 //Event Listeners
-function moveToNextInput(){
-    
+function moveToNextInput() {
+
 }
 
-document.addEventListener('DOMContentLoaded',assignWordsList());
+document.addEventListener('DOMContentLoaded', assignWordsList());
 //document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
-document.addEventListener('DOMContentLoaded',fillLetters('welcome'));
+document.addEventListener('DOMContentLoaded', fillLetters('welcome'));
 
-slider.addEventListener('click',type);
-generateButton.addEventListener('click',generateWord);
-checkButton.addEventListener('click',checkWord);
-wordInput.addEventListener('click',empty);
-wordInput.addEventListener("keyup", function(event) {
+slider.addEventListener('click', type);
+generateButton.addEventListener('click', generateWord);
+checkButton.addEventListener('click', checkWord);
+wordInput.addEventListener('click', empty);
+wordInput.addEventListener("keyup", function (event) {
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
-      // Cancel the default action, if needed
-      event.preventDefault();
-      // Trigger the button element with a click
-      checkButton.click();
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        checkButton.click();
     }
-  });
+});
 
 //todoList.addEventListener('click', deleteCheck);
 //filterOption.addEventListener('click', filterTodo);
 
 //Functions
 
-function empty(){
+function empty() {
     emptyWord.hidden = true;
 }
 
-function type(){
-    
+function type() {
+
     pointsText.innerText = slider.value;
     //console.log(slider.value);
-    
+
 };
 
 String.prototype.shuffle = function () {
     var a = this.split(""),
         n = a.length;
 
-    for(var i = n - 1; i > 0; i--) {
+    for (var i = n - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var tmp = a[i];
         a[i] = a[j];
@@ -73,18 +73,18 @@ String.prototype.shuffle = function () {
     return a.join("");
 }
 
-function fillLetters(word){
+function fillLetters(word) {
     //<input type="text" class="letter">
     let wordLength = word.length;
     console.log()
     clearBox();
-    if(isCorrect === false){
-        for (let index = 0; index < wordLength-1; index++) {
+    if (isCorrect === false) {
+        for (let index = 0; index < wordLength - 1; index++) {
             const createInput = document.createElement('input');
             createInput.setAttribute("type", "text");
             createInput.setAttribute("class", "letter");
             letterContainerDIV.appendChild(createInput);
-            
+
         }
 
         const createInput = document.createElement('input');
@@ -99,14 +99,14 @@ function fillLetters(word){
             getLetters[index].value = word.charAt(index);
         }
     }
-    
+
     let leTT = document.querySelector('.letter');
-    leTT.addEventListener('animationend',function(){
-        tickImg.hidden=true;
+    leTT.addEventListener('animationend', function () {
+        tickImg.hidden = true;
     })
 }
 
-function fillAnswer(word){
+function fillAnswer(word) {
     let wordLength = word.length;
     clearBox();
 
@@ -114,41 +114,41 @@ function fillAnswer(word){
     //             <form class="input-container">
     //                 <input class="inputLetters" maxlength = "1"></input>
 
-    if(isCorrect === false){
-        for (let index = 0; index < wordLength-1; index++) {
+    if (isCorrect === false) {
+        for (let index = 0; index < wordLength - 1; index++) {
             const createInput = document.createElement('input');
             createInput.setAttribute("maxlength", "1");
             createInput.setAttribute("class", "inputLetters");
-            createInput.setAttribute("onkeypress","moveToNextInput()");
-            createInput.setAttribute("id",index);
+            createInput.setAttribute("onkeypress", "moveToNextInput()");
+            createInput.setAttribute("id", index);
             inputContainer.appendChild(createInput);
         }
 
         const createInput = document.createElement('input');
         createInput.setAttribute("maxlength", "1");
         createInput.setAttribute("class", "inputLetters");
-        createInput.setAttribute("onkeypress","moveToNextInput()");
-        createInput.setAttribute("id",wordLength-1);
+        createInput.setAttribute("onkeypress", "moveToNextInput()");
+        createInput.setAttribute("id", wordLength - 1);
         inputContainer.appendChild(createInput);
-        
+
         const getLetters = document.getElementsByClassName("inputLetters");
 
-        
+
         //Gjenerimi numrave Random per sa shkronja me i plotsu
         //console.log(getLetters[index].innerText = word.charAt(index));
-        const nums = pick(getLetters.length/2, 0, getLetters.length-1);
+        const nums = pick(getLetters.length / 2, 0, getLetters.length - 1);
         //console.log(nums);
         for (let index = 0; index < getLetters.length; index++) {
-            if(nums.includes(index)){
+            if (nums.includes(index)) {
                 getLetters[index].value = word.charAt(index);
                 getLetters[index].disabled = true;
-                getLetters[index].setAttribute("disabled","1");
+                getLetters[index].setAttribute("disabled", "1");
             }
         }
     }
 }
 
-function moveToNextInput(){
+function moveToNextInput() {
     let activeElement = document.activeElement
     //let nextElement = querySelector('input[]');
     let activeId = activeElement.attributes[3];
@@ -160,48 +160,48 @@ function moveToNextInput(){
     //let nextElement = inputLetters[0].attributes[3];
     //console.log(countNext)
     let input = document.getElementById(countNext);
-    let inputPlusOne = document.getElementById(countNext+1);
-    console.log(countNext+1);
-    console.log(countNext+2)
-    let inputDisabled = input.getAttribute("disabled")==="1";
-    let inputDisabledPlusOne = inputPlusOne.getAttribute("disabled")==="1";
+    let inputPlusOne = document.getElementById(countNext + 1);
+    console.log(countNext + 1);
+    console.log(countNext + 2)
+    let inputDisabled = input.getAttribute("disabled") === "1";
+    let inputDisabledPlusOne = inputPlusOne.getAttribute("disabled") === "1";
     console.log(inputDisabled)
     console.log(inputDisabledPlusOne)
-    
-    
-    if(inputDisabled && inputDisabledPlusOne){
-        input = document.getElementById(countNext+2);
-    }else if(inputDisabled){
-        input = document.getElementById(countNext+1);
+
+
+    if (inputDisabled && inputDisabledPlusOne) {
+        input = document.getElementById(countNext + 2);
+    } else if (inputDisabled) {
+        input = document.getElementById(countNext + 1);
     }
-    
-    
-    
+
+
+    input.value = "";
     input.focus();
     input.select();
     //console.log(activeElement.attributes[3]);
     //console.log(nextElement);
 }
 
-function getInput(){
+function getInput() {
     const getLetters = document.getElementsByClassName("inputLetters");
     let word = "";
     for (let index = 0; index < getLetters.length; index++) {
-        if(getLetters[index].value===""){
-            word+="_";
+        if (getLetters[index].value === "") {
+            word += "_";
         }
-        word+=getLetters[index].value;
+        word += getLetters[index].value;
     }
     return word;
 }
 
 //Generates random num of numbers
-function pick(n, min, max){
+function pick(n, min, max) {
     var values = [], i = max;
-    while(i >= min) values.push(i--);
+    while (i >= min) values.push(i--);
     var results = [];
     var maxIndex = max;
-    for(i=1; i <= n; i++){
+    for (i = 1; i <= n; i++) {
         maxIndex--;
         var index = Math.floor(maxIndex * Math.random());
         results.push(values[index]);
@@ -211,8 +211,8 @@ function pick(n, min, max){
 }
 
 
-function clearBox(){
-    letterContainerDIV.innerHTML= "";
+function clearBox() {
+    letterContainerDIV.innerHTML = "";
 }
 
 /*REFERENCE
@@ -273,7 +273,7 @@ fetch(api)
 
 
 //Generates random words from API 
-async function getRandomWords(){
+async function getRandomWords() {
     //url for request
 
     //UNCOMMENT FOR API WORDS
@@ -296,7 +296,7 @@ async function getRandomWords(){
     //     console.log(wordsReturned[1]);
     // });
     //console.log(wordsReturned);
-    
+
     return json;
 }
 //UNCOMMENT FOR API WORDS
@@ -307,55 +307,55 @@ async function getRandomWords(){
 // }
 
 //
-function assignWordsList(){
+function assignWordsList() {
     words = ['deliver',
-    'meddle',
-    'planes'
-    ,'permissible'
-    ,'spotty'
-    ,'impolite'
-    ,'whimsical'
-    ,'suck'
-    ,'conscious'
-    ,'lunchroom'
-    ,'pray'
-    ,'crowded'
-    ,'mind'
-    ,'frantic'
-    ,'accidental'
-    ,'historical'
-    ,'cheerful'
-    ,'substance'
-    ,'smiling'
-    ,'wide'
-    ,'damage'
-    ,'fretful'
-    ,'chilly'
-    ,'broken'
-    ,'adventurous'
-    ,'guide'
-    ,'bustling'
-    ,'petite'
-    ,'promise'
-    ,'excellent'
-    ,'pale'
-    ,'play'
-    ,'rings'
-    ,'corn'
-    ,'hospital'
-    ,'dog'
-    ,'tested'
-    ,'whip'
-    ,'dramatic'
-    ,'womanly'];
+        'meddle',
+        'planes'
+        , 'permissible'
+        , 'spotty'
+        , 'impolite'
+        , 'whimsical'
+        , 'suck'
+        , 'conscious'
+        , 'lunchroom'
+        , 'pray'
+        , 'crowded'
+        , 'mind'
+        , 'frantic'
+        , 'accidental'
+        , 'historical'
+        , 'cheerful'
+        , 'substance'
+        , 'smiling'
+        , 'wide'
+        , 'damage'
+        , 'fretful'
+        , 'chilly'
+        , 'broken'
+        , 'adventurous'
+        , 'guide'
+        , 'bustling'
+        , 'petite'
+        , 'promise'
+        , 'excellent'
+        , 'pale'
+        , 'play'
+        , 'rings'
+        , 'corn'
+        , 'hospital'
+        , 'dog'
+        , 'tested'
+        , 'whip'
+        , 'dramatic'
+        , 'womanly'];
     return words;
 }
 
 //Gets the words and checks for length
 //Picks a random word from words array and displays
-function generateWord(){
+function generateWord() {
     checkButton.disabled = false;
-    
+
     //let wordsGenerated = getRandomWords();
     //console.log(words);
 
@@ -365,16 +365,16 @@ function generateWord(){
     let wordsPicked = [];
     let indexJashtem = 0;
     for (let i = 0; i < words.length; i++) {
-        if(words[i].length==sliderValue){
-           
-                wordsPicked[indexJashtem++]=words[i];
-            
+        if (words[i].length == sliderValue) {
+
+            wordsPicked[indexJashtem++] = words[i];
+
         }
     }
     //wordsPicked = words;
 
     //console.log(wordsPicked);
-    let random = Math.round(Math.random() * (wordsPicked.length-1));
+    let random = Math.round(Math.random() * (wordsPicked.length - 1));
     //return back to random
     wordToShuffle = wordsPicked[random];
     correctWord = wordToShuffle;
@@ -382,55 +382,55 @@ function generateWord(){
     //console.log(wordToShuffle)
     for (let index = 0; index > wordToShuffle.length; index++) {
         wordToShuffle = wordToShuffle.charAt(index) + " ";
-        
+
     }
 
-    inputContainer.innerHTML="";
+    inputContainer.innerHTML = "";
     fillAnswer(wordToShuffle);
     fillLetters(wordToShuffle);
     //wordToGuess.textContent = wordToShuffle;
     wordInput.value = "";
     //console.log(wordToDisplay)
-    
+
 }
 
-function clear(){
-    wordInput.value ="";
+function clear() {
+    wordInput.value = "";
 }
 
-function checkWord(){
+function checkWord() {
     let wordInputed = wordInput.value;
     console.log(getInput());
-    if(getInput() === correctWord){
+    if (getInput() === correctWord) {
         console.log('GOOD');
-        tickImg.hidden=false;
+        tickImg.hidden = false;
         generateWord();
         score++;
         isCorrect = false;
         clearBox();
         generateWord();
-        foul=0;
-    }else{
+        foul = 0;
+    } else {
         console.log('TRY AGAIN');
-        crossImg.hidden=false;
+        crossImg.hidden = false;
         //adds a eventListener to the element and checks when the element 
         //Animation ends
-        crossImg.addEventListener('animationend',function(){
-            crossImg.hidden=true;
+        crossImg.addEventListener('animationend', function () {
+            crossImg.hidden = true;
         })
-        if(wordInput.value===""){
+        if (wordInput.value === "") {
             emptyWord.hidden = false;
         }
-        if(wordInput.value!=="" && score>0){
+        if (wordInput.value !== "" && score > 0) {
             score--;
         }
         foul++;
-        wordInput.value ="";
+        wordInput.value = "";
     }
-    
+
     document.querySelector('.score').innerHTML = score;
     clear();
-    
+
 }
 
 /*

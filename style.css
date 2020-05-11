@@ -25,6 +25,7 @@ body{
 .big-container{
     display: flex;
     margin-top: 15vh;
+    width: 85%;
     background-color: blue;
     background-color: #8ABAD3ff;
     flex-direction: row;
@@ -211,13 +212,14 @@ body{
     font-size: 15px;
     font-weight: bolder;
     text-align: left;
-    margin-left: -20px;
+    
     margin-right: -20px;
 }
 
 .p{
     width: 40%;
     height: 50%;
+    max-width: 110px;
     text-align: left;
     font-weight: bold;
     font-size: 15px;
