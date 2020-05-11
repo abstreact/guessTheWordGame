@@ -19,7 +19,11 @@ let generateButton = document.querySelector('.generateWord');
 let correctWord = "";
 pointsText.innerText = slider.value;
 let inputContainer = document.querySelector('.input-container');
+let inputLetters = document.getElementsByClassName("inputLetters");
 //Event Listeners
+function moveToNextInput(){
+    
+}
 
 document.addEventListener('DOMContentLoaded',assignWordsList());
 //document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
@@ -114,12 +118,16 @@ function fillAnswer(word){
             const createInput = document.createElement('input');
             createInput.setAttribute("maxlength", "1");
             createInput.setAttribute("class", "inputLetters");
+            createInput.setAttribute("onkeypress","moveToNextInput()");
+            createInput.setAttribute("id",index);
             inputContainer.appendChild(createInput);
         }
 
         const createInput = document.createElement('input');
         createInput.setAttribute("maxlength", "1");
         createInput.setAttribute("class", "inputLetters");
+        createInput.setAttribute("onkeypress","moveToNextInput()");
+        createInput.setAttribute("id",wordLength-1);
         inputContainer.appendChild(createInput);
         
         const getLetters = document.getElementsByClassName("inputLetters");
@@ -133,9 +141,24 @@ function fillAnswer(word){
             if(nums.includes(index)){
                 getLetters[index].value = word.charAt(index);
                 getLetters[index].disabled = true;
+                getLetters[index].setAttribute("disabled","1");
             }
         }
     }
+}
+
+function moveToNextInput(){
+    let activeElement = document.activeElement
+    //if(activeElement.attributes)
+    //let nextElement = querySelector('input[]');
+    let activeId = activeElement.attributes[3];
+    console.log(activeId)
+    let nextLetter = document.getElementById(""+activeId)
+    nextLetter.select();
+    // let nextElement = querySelector('inputLetters[0].attributes[3]');
+    //let nextElement = inputLetters[0].attributes[3];
+    console.log(activeElement.attributes[3]);
+    //console.log(nextElement);
 }
 
 function getInput(){
@@ -310,7 +333,7 @@ function assignWordsList(){
 //Picks a random word from words array and displays
 function generateWord(){
     checkButton.disabled = false;
-
+    
     //let wordsGenerated = getRandomWords();
     //console.log(words);
 
@@ -346,6 +369,7 @@ function generateWord(){
     //wordToGuess.textContent = wordToShuffle;
     wordInput.value = "";
     //console.log(wordToDisplay)
+    
 }
 
 function clear(){
@@ -383,7 +407,6 @@ function checkWord(){
     }
     
     document.querySelector('.score').innerHTML = score;
-    wordInput.select();
     clear();
     
 }
