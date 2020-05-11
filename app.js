@@ -4,7 +4,7 @@ let foul = 0;
 let isCorrect = false;
 let scoreElement = document.querySelector('.score');
 let wordToGuess = document.querySelector('.wordToGuess');
-let wordInput = document.querySelector('.guessTheWordInput');
+let wordInput = document.querySelector('.input-container');
 let letterContainerDIV = document.querySelector('.letter-container');
 let pointsText = document.querySelector('.points');
 let slider = document.querySelector('.slider');
@@ -132,9 +132,22 @@ function fillAnswer(word){
         for (let index = 0; index < getLetters.length; index++) {
             if(nums.includes(index)){
                 getLetters[index].value = word.charAt(index);
+                getLetters[index].disabled = true;
             }
         }
     }
+}
+
+function getInput(){
+    const getLetters = document.getElementsByClassName("inputLetters");
+    let word = "";
+    for (let index = 0; index < getLetters.length; index++) {
+        if(getLetters[index].value===""){
+            word+="_";
+        }
+        word+=getLetters[index].value;
+    }
+    return word;
 }
 
 //Generates random num of numbers
@@ -341,8 +354,8 @@ function clear(){
 
 function checkWord(){
     let wordInputed = wordInput.value;
-    console.log(wordInputed);
-    if(wordInputed === correctWord){
+    console.log(getInput());
+    if(getInput() === correctWord){
         console.log('GOOD');
         tickImg.hidden=false;
         generateWord();

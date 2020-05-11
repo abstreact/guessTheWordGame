@@ -52,11 +52,27 @@ body{
 }
 
 .help-container{
+    display: flex;
+    flex-direction: row;
     position: relative;
+    justify-content: end;
+    align-items: flex-end;
     height: 500px;
     width: 30%;
     background-color: lightblue;
 
+}
+
+.help-container div{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.help-container >div{
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .body-first, .body-second .help-container{
@@ -139,8 +155,9 @@ body{
     width: 100%;
     height: 400px;
     flex-basis: 20%;
-    justify-content: space-between;
+    justify-content: center;
     text-align: center;
+    margin-top: 20px;
 }
 
 .slider{
@@ -153,14 +170,11 @@ body{
 
 .points-container{
     display: flex;
-    flex-direction: column;
-    width: 50%;
+    
+    width: 100%;
 }
 
-.points-container div{
-    display: flex;
-    flex-direction: row;
-}
+
 
 .scoreContainer{
     display: inline;
@@ -197,12 +211,12 @@ body{
     font-size: 15px;
     font-weight: bolder;
     text-align: left;
-    margin-left: 20px;
+    margin-left: -20px;
     margin-right: -20px;
 }
 
 .p{
-    width: 30%;
+    width: 40%;
     height: 50%;
     text-align: left;
     font-weight: bold;
@@ -242,11 +256,15 @@ body{
     height: 50px;
     width: 50px;
     margin-left: 5px;
+    
     margin-right: 5px;
     pointer-events:none;
     animation-name: fadein;
     animation-duration: 1.4s;
     text-transform: uppercase;
+    border-style: solid;
+    border-width: 2px;
+    background: rgba(194, 24, 89, 0.2);
 }
 
 
