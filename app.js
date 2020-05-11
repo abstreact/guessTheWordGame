@@ -152,17 +152,34 @@ function moveToNextInput(){
     let activeElement = document.activeElement
     //let nextElement = querySelector('input[]');
     let activeId = activeElement.attributes[3];
-    console.log(activeId.value)
+    console.log("Active id: " + activeId.value)
     //document.getElementById("2");
     countNext = parseInt(activeId.value) + 1;
-    console.log(countNext);
+    console.log("CountNext: " + countNext);
     // let nextElement = querySelector('inputLetters[0].attributes[3]');
     //let nextElement = inputLetters[0].attributes[3];
     //console.log(countNext)
-    const input = document.getElementById(countNext);
+    let input = document.getElementById(countNext);
+    let inputPlusOne = document.getElementById(countNext+1);
+    console.log(countNext+1);
+    console.log(countNext+2)
+    let inputDisabled = input.getAttribute("disabled")==="1";
+    let inputDisabledPlusOne = inputPlusOne.getAttribute("disabled")==="1";
+    console.log(inputDisabled)
+    console.log(inputDisabledPlusOne)
+    
+    
+    if(inputDisabled && inputDisabledPlusOne){
+        input = document.getElementById(countNext+2);
+    }else if(inputDisabled){
+        input = document.getElementById(countNext+1);
+    }
+    
+    
+    
     input.focus();
     input.select();
-    console.log(activeElement.attributes[3]);
+    //console.log(activeElement.attributes[3]);
     //console.log(nextElement);
 }
 
