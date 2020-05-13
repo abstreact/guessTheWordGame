@@ -23,6 +23,7 @@ let inputContainer = document.querySelector('.input-container');
 let mainContainer = document.querySelector('.main-container');
 let aboutusContainer = document.querySelector('.aboutus-container');
 let inputLetters = document.getElementsByClassName("inputLetters");
+let aboutusButton = document.querySelector('.aboutus-button');
 //Event Listeners
 function moveToNextInput() {
 
@@ -31,7 +32,7 @@ function moveToNextInput() {
 document.addEventListener('DOMContentLoaded', assignWordsList());
 //document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
 document.addEventListener('DOMContentLoaded', fillLetters('welcome'));
-
+aboutusButton.addEventListener('click',rotateDivToAbout);
 slider.addEventListener('click', type);
 generateButton.addEventListener('click', generateWord);
 checkButton.addEventListener('click', checkWord);
@@ -381,7 +382,7 @@ function minusOne(){
 function generateWord() {
     checkButton.disabled = false;
     //plusOne();
-    rotateDivToAbout();
+    
     //let wordsGenerated = getRandomWords();
     //console.log(words);
     //plusOne()
