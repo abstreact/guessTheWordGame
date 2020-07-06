@@ -22,8 +22,10 @@ pointsText.innerText = slider.value;
 let inputContainer = document.querySelector('.input-container');
 let mainContainer = document.querySelector('.main-container');
 let aboutusContainer = document.querySelector('.aboutus-container');
+let contactContainer = document.querySelector('.contact-container');
 let inputLetters = document.getElementsByClassName("inputLetters");
 let aboutusButton = document.querySelector('.aboutus-button');
+let contactButton = document.querySelector('.contact-button');
 //Event Listeners
 function moveToNextInput() {
 
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', assignWordsList());
 //document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
 document.addEventListener('DOMContentLoaded', fillLetters('welcome'));
 aboutusButton.addEventListener('click',rotateDivToAbout);
+contactButton.addEventListener('click',rotateDivToContact);
 slider.addEventListener('click', type);
 generateButton.addEventListener('click', generateWord);
 checkButton.addEventListener('click', checkWord);
@@ -49,6 +52,9 @@ wordInput.addEventListener("keyup", function (event) {
 
 let flipBtn = document.querySelector(".flip");
 flipBtn.addEventListener('click', rotateDivToGame);
+
+let flipPBtn = document.querySelector(".flipP");
+flipPBtn.addEventListener('click', rotateDivToGame);
 
 //todoList.addEventListener('click', deleteCheck);
 //filterOption.addEventListener('click', filterTodo);
@@ -468,11 +474,20 @@ function checkWord() {
 function rotateDivToAbout(){
     mainContainer.classList.add("main-container-rotate");
     aboutusContainer.classList.add("aboutus-container-rotate");
+    contactContainer.classList.remove("contact-container-rotate");
+}
+
+function rotateDivToContact(){
+    mainContainer.classList.add("main-container-rotate");
+    contactContainer.classList.add("contact-container-rotate");
+    aboutusContainer.classList.remove("aboutus-container-rotate");
 }
 
 function rotateDivToGame(){
-    mainContainer.classList.remove("main-container-rotate");
     aboutusContainer.classList.remove("aboutus-container-rotate");
+    contactContainer.classList.remove("contact-container-rotate");
+    mainContainer.classList.remove("main-container-rotate");
+    mainContainer.add("main-container");
 }
 
 /*

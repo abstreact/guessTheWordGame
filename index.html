@@ -51,6 +51,7 @@
                         <div>
                             <p class="p">Num of letters:</p>
                             <p class="points"></p>
+                            <button class="contact-button">Contact</button>
                             <button class="aboutus-button">About us</button>
                         </div>
                         <input type="range" min="5" max="10" value="5" class="slider" id="myRange">
@@ -62,7 +63,24 @@
                     <h1 class="aboutus-text">BL3D1</h1>
                     <h1 class="aboutus-text1">BL3D1</h1>
                     <h1 class="aboutus-text2">BL3D1</h1>
+                    
                     <button class="flip">Back</button>
+                </div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-content">
+                    <main>
+                        <p>SEND EMAIL</p>
+                        <form class="contact-form"action="contactform.php" method = "post">
+                            <input type="text" name="name" placeholder="Full name">
+                            <input type="text" name="mail" placeholder="Your e-mail">
+                            <input type="text" name="subject" placeholder="Subject">
+                            <textarea name="message" placeholder="Message"></textarea>
+                            <button type="submit" name="submit">Submit form</button>
+                            
+                        </form>
+                    </main>
+                    <button class="flipP">Back</button>
                 </div>
             </div>
         </div>
