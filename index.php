@@ -7,17 +7,61 @@
 	<title>Document</title>
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./style.css"/>
-	
-	<script type="text/javascript">
-		function runScript(){
-			$.ajax({url:"sendEmailscript.php",success:function(result){
-				alert("Me sukses!");
-			}
-		})
-		let name = document.querySelector('.name').value;
-		alert("Email u dergua me sukses!\n\nFaleminderit per feedback |" + name + "|");
-	}
-	</script>
+	<?php
+            use PHPMailer\PHPMailer\PHPMailer;
+            use PHPMailer\PHPMailer\SMTP;
+            require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\PHPMailer.php';
+            require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\SMTP.php';
+            require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\Exception.php';
+            require 'C:\xampp\phpMyAdmin\vendor\autoload.php';
+            //require 'C:\xampp\htdocs\guessTheWordGame\index.php';
+            if(isset($_POST['submit'])) {
+                $name = $_POST['name'];
+                $mail = $_POST['mail'];
+                $body = $_POST['body'];
+                $message = $_POST['message'];
+                $name = $_POST["name"];
+                $mail = $_POST["mail"];
+                $body = $_POST["body"];
+                $message = $_POST["message"];
+                $mail = new PHPMailer;
+                $mail->isSMTP();
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 465;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->SMTPAuth = true;
+                $mail->Username = 'theguessthewordgame@gmail.com';
+                $mail->Password = 'Samifrasheri12';
+                $mail->setFrom('theguessthewordgame@gmail.com', 'guessTheWord feedback');
+                $mail->addAddress('theguessthewordgame@gmail.com', 'guessTheWord');
+                $mail->Subject = 'guessTheWord Test';
+                $mail->Body = "Test mesazh nga: $name.\nPermbajtja: $body\n$message\nBruh";
+                //Replace the plain text body with one created manually
+                //$mail->AltBody = 'This is a plain-text message body';
+                //$message = 'U dergua me sukses';
+                //echo "<script type='text/javascript'>alert('Me sukses');</script>";
+                //Attach an image file
+                //$mail->addAttachment('images/phpmailer_mini.png');
+                
+                //send the message, check for errors
+                //if (!$mail->send()) {
+                //	$message = 'U dergua me sukses';
+                //    echo "<script type='text/javascript'>alert('Me sukses');</script>";
+                //}
+                //else{
+                    //echo $mail.error_log;
+                //}
+                //header('Location:index.php');
+                if($mail->send()){
+                    header('Location:sindex.php');
+                }
+                echo "<script type='text/javascript'>alert('Faleminderit per feedback $name!');</script>";
+                header('Location: index.php');
+                
+        }
+        ?>
+
 </head>
 <body>
         <div class="whole-container">
@@ -53,7 +97,7 @@
                     </div>
                         <p class="empty" hidden>FILL THE WORD PLEASE!</p>
                         <button href="#" class="checkButtonc checkButton">CHECK!</button>
-                        <button class="generateButtonc generateWord">GENERATE</button>
+                        <button class="generateButtonc generateWord">NEW WORD</button>
                         <!--<button class="checkButton" type="button">CHECK!</button>-->
                         <!--<button class="generateWord" type="button">Generate!</button>-->
                     </div>
@@ -85,21 +129,16 @@
                     <main>
 						<p>SEND EMAIL</p>
                         
-                        <?php
-                            if(isset($_POST['submit'])
-                            ){
-                                $name = $_POST["name"];
-                                $mail = $_POST["mail"];
-                            }
-                        ?>
+                       
                         
-                        <form name="contact-form" class="contact-form" action="sendEmailscript.php" method = "post">
+                        <form name="contact-form" class="contact-form" action="index.php" method = "post">
                             <input class = "name" type="text" name="name" placeholder="Full name">
                             <input type="text" name="mail" placeholder="Your e-mail">
                             <input type="text" name="body" placeholder="Subject">
                             <textarea name="message" placeholder="Message"></textarea>
-                            <button type="submit" name="submit" onclick="runScript()">Submit form</button>
+                            <button type="submit" name="submit" >Submit form</button>
                         </form>
+                        
                     </main>
                     <button class="flipP">Back</button>
                 </div>

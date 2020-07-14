@@ -9,15 +9,18 @@
 //Import PHPMailer classes into the global namespace
             use PHPMailer\PHPMailer\PHPMailer;
             use PHPMailer\PHPMailer\SMTP;
-            //include 'index.php';
+            
             require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\PHPMailer.php';
             require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\SMTP.php';
             require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\Exception.php';
             require 'C:\xampp\phpMyAdmin\vendor\autoload.php';
-            
-            $name = $_POST["name"];
-            
-            
+            require 'C:\xampp\htdocs\guessTheWordGame\index.php';
+			
+			$name = $_POST["name"];
+            $mail = $_POST["mail"];
+			$body = $_POST["body"];
+			$message = $_POST["message"];
+
 			//Create a new PHPMailer instance
 			$mail = new PHPMailer;
 
@@ -66,7 +69,7 @@
 			//Read an HTML message body from an external file, convert referenced images to embedded,
 			//convert HTML into a basic plain-text alternative body
 			//$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-			$mail->Body = "Test mesazh nga: .\nPermbajtja:\nBro";
+			$mail->Body = "Test mesazh nga: .\nPermbajtja:\nBruh";
 			//Replace the plain text body with one created manually
 			//$mail->AltBody = 'This is a plain-text message body';
             //$message = 'U dergua me sukses';
@@ -81,6 +84,10 @@
             //}
             //else{
                 //echo $mail.error_log;
-            //}
-            $mail->send();
-            header('Location:index.php');
+			//}
+			//header('Location:index.php');
+			if($mail->send()){
+				header('Location:sindex.php');
+			}
+            header('Location: index.php');
+            
