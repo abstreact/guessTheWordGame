@@ -9,7 +9,7 @@
 //Import PHPMailer classes into the global namespace
             use PHPMailer\PHPMailer\PHPMailer;
             use PHPMailer\PHPMailer\SMTP;
-            include 'index.html';
+            //include 'index.php';
             require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\PHPMailer.php';
             require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\SMTP.php';
             require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\Exception.php';
@@ -66,18 +66,21 @@
 			//Read an HTML message body from an external file, convert referenced images to embedded,
 			//convert HTML into a basic plain-text alternative body
 			//$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-			$mail->Body = "Test mesazh nga: $name.\nPermbajtja:\nBro";
+			$mail->Body = "Test mesazh nga: .\nPermbajtja:\nBro";
 			//Replace the plain text body with one created manually
 			//$mail->AltBody = 'This is a plain-text message body';
             //$message = 'U dergua me sukses';
             //echo "<script type='text/javascript'>alert('Me sukses');</script>";
 			//Attach an image file
 			//$mail->addAttachment('images/phpmailer_mini.png');
-            function alert() {
-                //echo '<script>alert("Welcome to Geeks for Geeks")</script>';
-            }
+            
 			//send the message, check for errors
-			//if ($mail->send()) {
+			//if (!$mail->send()) {
 			//	$message = 'U dergua me sukses';
             //    echo "<script type='text/javascript'>alert('Me sukses');</script>";
-			//}
+            //}
+            //else{
+                //echo $mail.error_log;
+            //}
+            $mail->send();
+            header('Location:index.php');

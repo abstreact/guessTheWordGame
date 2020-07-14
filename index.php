@@ -11,11 +11,11 @@
 	<script type="text/javascript">
 		function runScript(){
 			$.ajax({url:"sendEmailscript.php",success:function(result){
-				//alert("Me sukses!");
+				alert("Me sukses!");
 			}
 		})
-		//let name = document.querySelector('.name');
-		alert("Email u dergua me sukses!\n\nFaleminderit per feedback" + name);
+		let name = document.querySelector('.name').value;
+		alert("Email u dergua me sukses!\n\nFaleminderit per feedback |" + name + "|");
 	}
 	</script>
 </head>
@@ -79,13 +79,22 @@
                     <button class="flip">Back</button>
                 </div>
             </div>
+            
             <div class="contact-container">
                 <div class="contact-content">
                     <main>
 						<p>SEND EMAIL</p>
-						
+                        
+                        <?php
+                            if(isset($_POST['submit'])
+                            ){
+                                $name = $_POST["name"];
+                                $mail = $_POST["mail"];
+                            }
+                        ?>
+                        
                         <form name="contact-form" class="contact-form" action="sendEmailscript.php" method = "post">
-                            <input type="text" name="name" placeholder="Full name">
+                            <input class = "name" type="text" name="name" placeholder="Full name">
                             <input type="text" name="mail" placeholder="Your e-mail">
                             <input type="text" name="body" placeholder="Subject">
                             <textarea name="message" placeholder="Message"></textarea>
