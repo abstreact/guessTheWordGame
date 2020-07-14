@@ -7,17 +7,12 @@
  */
 
 //Import PHPMailer classes into the global namespace
-            use PHPMailer\PHPMailer\PHPMailer;
-            use PHPMailer\PHPMailer\SMTP;
-            include 'index.html';
-            require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\PHPMailer.php';
-            require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\SMTP.php';
-            require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\Exception.php';
-            require 'C:\xampp\phpMyAdmin\vendor\autoload.php';
-            
-            $name = $_POST["name"];
-            
-            
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\PHPMailer.php';
+		require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\SMTP.php';
+		require 'C:\xampp\htdocs\guessTheWordGame\phpMailSender\PHPMailer-master\src\Exception.php';
+		require 'C:\xampp\phpMyAdmin\vendor\autoload.php';
 			//Create a new PHPMailer instance
 			$mail = new PHPMailer;
 
@@ -61,23 +56,28 @@
 			$mail->addAddress('theguessthewordgame@gmail.com', 'guessTheWord');
 
 			//Set the subject line
-			$mail->Subject = 'guessTheWord Test';
+			$mail->Subject = 'Test nga guessTheWord';
 
 			//Read an HTML message body from an external file, convert referenced images to embedded,
 			//convert HTML into a basic plain-text alternative body
 			//$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-			$mail->Body = "Test mesazh nga: $name.\nPermbajtja:\nBro";
+			$mail->Body = "Test mesazh";
 			//Replace the plain text body with one created manually
 			//$mail->AltBody = 'This is a plain-text message body';
-            //$message = 'U dergua me sukses';
-            //echo "<script type='text/javascript'>alert('Me sukses');</script>";
+
 			//Attach an image file
 			//$mail->addAttachment('images/phpmailer_mini.png');
-            function alert() {
-                //echo '<script>alert("Welcome to Geeks for Geeks")</script>';
-            }
+
 			//send the message, check for errors
-			//if ($mail->send()) {
-			//	$message = 'U dergua me sukses';
-            //    echo "<script type='text/javascript'>alert('Me sukses');</script>";
-			//}
+			if (!$mail->send()) {
+				//echo 'Mailer Error: '. $mail->ErrorInfo;
+			} else {
+				echo 'Message sent!';
+				//Section 2: IMAP
+				//Uncomment these to save your message in the 'Sent Mail' folder.
+				#if (save_mail($mail)) {
+				#    echo "Message saved!";
+				#}
+			}
+
+					}
