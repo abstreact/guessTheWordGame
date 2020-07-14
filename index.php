@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 	<title>Document</title>
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="./style.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link href="style.css?<?=filemtime("style.css")?>" rel="stylesheet" type="text/css" />
+	
 	<?php
             use PHPMailer\PHPMailer\PHPMailer;
             use PHPMailer\PHPMailer\SMTP;
@@ -16,14 +17,13 @@
             require 'C:\xampp\phpMyAdmin\vendor\autoload.php';
             //require 'C:\xampp\htdocs\guessTheWordGame\index.php';
             if(isset($_POST['submit'])) {
+                //vlerat nga input form html
                 $name = $_POST['name'];
-                $mail = $_POST['mail'];
+                $email = $_POST['email'];
                 $body = $_POST['body'];
                 $message = $_POST['message'];
-                $name = $_POST["name"];
-                $mail = $_POST["mail"];
-                $body = $_POST["body"];
-                $message = $_POST["message"];
+
+                
                 $mail = new PHPMailer;
                 $mail->isSMTP();
                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -33,31 +33,16 @@
                 $mail->SMTPAuth = true;
                 $mail->Username = 'theguessthewordgame@gmail.com';
                 $mail->Password = 'Samifrasheri12';
-                $mail->setFrom('theguessthewordgame@gmail.com', 'guessTheWord feedback');
+                $mail->setFrom('theguessthewordgame@gmail.com', 'Feedback from the Game');
                 $mail->addAddress('theguessthewordgame@gmail.com', 'guessTheWord');
                 $mail->Subject = 'guessTheWord Test';
-                $mail->Body = "Test mesazh nga: $name.\nPermbajtja: $body\n$message\nBruh";
-                //Replace the plain text body with one created manually
-                //$mail->AltBody = 'This is a plain-text message body';
-                //$message = 'U dergua me sukses';
-                //echo "<script type='text/javascript'>alert('Me sukses');</script>";
-                //Attach an image file
-                //$mail->addAttachment('images/phpmailer_mini.png');
-                
-                //send the message, check for errors
-                //if (!$mail->send()) {
-                //	$message = 'U dergua me sukses';
-                //    echo "<script type='text/javascript'>alert('Me sukses');</script>";
-                //}
-                //else{
-                    //echo $mail.error_log;
-                //}
-                //header('Location:index.php');
+                $mail->Body = "Keni nje mesazh nga: $name.\nTitulli: $body\nPermbajtja: \n$message\nEmail: $email\nBruh";
                 if($mail->send()){
-                    header('Location:sindex.php');
+                    header('Location:index.php');
+                    echo "<script type='text/javascript'>alert('Faleminderit per feedback $name! From IN');</script>";
                 }
                 echo "<script type='text/javascript'>alert('Faleminderit per feedback $name!');</script>";
-                header('Location: index.php');
+                //header('Location: index.php');
                 
         }
         ?>
@@ -127,16 +112,19 @@
             <div class="contact-container">
                 <div class="contact-content">
                     <main>
-						<p>SEND EMAIL</p>
-                        
-                       
                         
                         <form name="contact-form" class="contact-form" action="index.php" method = "post">
-                            <input class = "name" type="text" name="name" placeholder="Full name">
-                            <input type="text" name="mail" placeholder="Your e-mail">
-                            <input type="text" name="body" placeholder="Subject">
-                            <textarea name="message" placeholder="Message"></textarea>
-                            <button type="submit" name="submit" >Submit form</button>
+                            <div class="form-content">
+                            <label for="name">Emri juaj: </label>
+                            <input id = "name" class = "name" type="text" name="name" placeholder="Full name">
+                            <label for="email">Emaili juaj: </label>
+                            <input id = "email" class = "email" type="text" name="email" placeholder="Your e-mail">
+                            <label for="body">Titulli: </label>
+                            <input id = "body" class = "body" type="text" name="body" placeholder="Subject">
+                            <label for="message">Mesazhi: </label>
+                            <textarea id = "message" class = "message" name="message" placeholder="Message"></textarea>
+                            <button class = "submit" type="submit" name="submit" >Dergo email</button>
+                            </div>
                         </form>
                         
                     </main>

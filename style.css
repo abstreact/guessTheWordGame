@@ -74,10 +74,22 @@ body{
     box-shadow: 0 0 1px black, 0 0 20px black;
 }
 
+.form-content{
+    display: flex;
+    width: 200px;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .contact-container-rotate{
     display: flex;
     transition: transform rotateY(300deg);
     animation-duration: 2s;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-content, .contact-form{
@@ -86,9 +98,24 @@ body{
     height: 500px;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
 }
+
+.name, .email, .body, .message{
+    padding: 5px;
+    font-size: 17px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: solid;
+    border-radius: 9px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    text-shadow: 19px 0px 30px rgba(66,66,66,.75);
+}
+
+
 
 .flip{
     display: inline;
@@ -511,15 +538,41 @@ body{
 	cursor:pointer;
 	color:#306108;
 	font-family:Arial;
-	font-size:20px;
+	font-size:18px;
 	font-weight:bold;
-    padding-top: 10px;
+    padding-top: 3px;
 	text-decoration:none;
 }
 .checkButtonc:hover {
 	background-color:transparent;
 }
 .checkButtonc:active {
+	position:relative;
+	top:1px;
+}
+
+.submit {
+	box-shadow: 2px 3px 6px -2px #caefab;
+	background-color:transparent;
+    border-radius:17px;
+    height: 38px;
+    width: 120px;
+    text-align: center;
+    margin-top: 30px;
+	border:3px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+    padding-top: 4px;
+	text-decoration:none;
+}
+.submit:hover {
+	background-color:transparent;
+}
+.submit:active {
 	position:relative;
 	top:1px;
 }
