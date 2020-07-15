@@ -113,12 +113,15 @@
             
             <div class="aboutus-container">
                 <div class="aboutus-content">
-                    <h1 class="aboutus-text">BL3D1</h1>
-                    <h1 class="aboutus-text1">BL3D1</h1>
-                    <h1 class="aboutus-text2">BL3D1</h1>
-
+                    <div class="bledi-text">
+                        <h1 class="aboutus-text">BL3D1</h1>
+                        <h1 class="aboutus-text1">BL3D1</h1>
+                        <h1 class="aboutus-text2">BL3D1</h1>
+                    </div>
+                    <button class="github-button"><i class="fa fa-github"  onclick= "window.location.href='https://github.com/abstreact/guessTheWordGame';"></i></button> 
                     <button class="flip">Back</button>
                 </div>
+                
             </div>
             
             <div class="contact-container">

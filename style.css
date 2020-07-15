@@ -53,8 +53,9 @@ body{
 .aboutus-container{
     display: none;
     margin-top: 15vh;
-    width: 100%;
+    width: 200%;
     height: 20%;
+    margin-right: 500px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -172,9 +173,22 @@ body{
     width: 100%;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
     height: 500px;
     background-color: rgb(245, 231, 142);
     box-shadow: 0 0 1px black, 0 0 20px black;
+}
+
+.bledi-text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.github-button{
+    font-size: 80px;
 }
 
 @keyframes comeUp{
