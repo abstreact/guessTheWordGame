@@ -31,8 +31,8 @@ function moveToNextInput() {
 
 }
 
-document.addEventListener('DOMContentLoaded', assignWordsList());
-//document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
+//document.addEventListener('DOMContentLoaded', assignWordsList());
+document.addEventListener('DOMContentLoaded',assignWordsList(getRandomWords()));
 document.addEventListener('DOMContentLoaded', fillLetters('welcome'));
 aboutusButton.addEventListener('click',rotateDivToAbout);
 contactButton.addEventListener('click',rotateDivToContact);
@@ -122,10 +122,6 @@ function fillAnswer(word) {
     let wordLength = word.length;
     clearBox();
 
-    // <div class="body-second">
-    //             <form class="input-container">
-    //                 <input class="inputLetters" maxlength = "1"></input>
-
     if (isCorrect === false) {
         for (let index = 0; index < wordLength - 1; index++) {
             const createInput = document.createElement('input');
@@ -173,9 +169,6 @@ function moveToNextInput() {
     //document.getElementById("2");
     countNext = parseInt(activeId.value) + 1;
 
-    // let nextElement = querySelector('inputLetters[0].attributes[3]');
-    //let nextElement = inputLetters[0].attributes[3];
-    //console.log(countNext)
     let input = document.getElementById(countNext);
     let inputPlusOne = document.getElementById(countNext + 1);
 
@@ -229,141 +222,86 @@ function clearBox() {
     letterContainerDIV.innerHTML = "";
 }
 
-/*REFERENCE
-function reference(){
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add("todo");
-    //Create LI
-    const newTodo = document.createElement('li');
-    //Set text of LI
-    newTodo.innerText = todoInput.value;
-    //Add a class name to the newTodo-li
-    newTodo.classList.add('todo-item');
-    //add the LI to the DIV created above as a child
-    todoDiv.appendChild(newTodo);
-    //ADD TO DO TO LOCAL STORAGE
-    saveLocalTodos(todoInput.value);
-    //Check mark Button
-    const completedButton = document.createElement('button');
-    //create a logo inside of the button that we created above
-    completedButton.innerHTML = '<i class="fas fa-check"></i>'
-    //add a classname to the button 
-    completedButton.classList.add('complete-btn');
-    //add that button to the div that we are working rn TODODIV
-    todoDiv.appendChild(completedButton);
-    //Check trash Button
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>'
-    trashButton.classList.add('trash-btn');
-    todoDiv.appendChild(trashButton);
-    //Append DIV to List
-    todoList.appendChild(todoDiv);
-    
-    //Clear Todoinput value
-    todoInput.value="";
-}
-*/
-
-/*REFERENCE
-fetch(api)
-    .then(data =>{
-        return data.json();
-    })
-    .then(data =>{
-        console.log(data);
-        const {temp,feels_like} = data.main;
-        const {description,main} = data.weather[0];
-        let {name} = data;
-        //Set DOM elements from the API
-        tempToC = temp - 273.15;
-        feels_likeToC = feels_like - 273.15;
-        temperatureDegree.textContent = tempToC.toPrecision(3);
-        temperatureDescription.textContent = "Feels like: " + feels_likeToC.toPrecision(3);
-        console.log(name);
-        locationTimezone.textContent = name;
-    })
-});
-*/
-
 
 //Generates random words from API 
-// async function getRandomWords() {
-//     //url for request
+async function getRandomWords() {
+    //url for request
 
-//     //UNCOMMENT FOR API WORDS
-//      let numOfWords = 500;
-//      let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
+    //UNCOMMENT FOR API WORDS
+     let numOfWords = 500;
+     let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
 
-//      //Gets request and returns in Array at json
-//      const response = await fetch(url);
-//      const json = await response.json();
-//      //console.log(json);
-//      words = json;
+     //Gets request and returns in Array at json
+     const response = await fetch(url);
+     const json = await response.json();
+     //console.log(json);
+     words = json;
 
-//      let wordsArray = fetch(url)
-//      .then(data =>{
-//          return data.json();
-//      })
-//      .then(data =>{
-//          wordsReturned = data;
-//          console.log(wordsReturned);
-//          console.log(wordsReturned[1]);
-//      });
-//     console.log(wordsReturned);
+     let wordsArray = fetch(url)
+     .then(data =>{
+         return data.json();
+     })
+     .then(data =>{
+         wordsReturned = data;
+         console.log(wordsReturned);
+         console.log(wordsReturned[1]);
+     });
+    console.log(wordsReturned);
 
-//     return json;
-// }
+    return json;
+}
 //UNCOMMENT FOR API WORDS
 //Assigns the randomGenerated words to words list
-//  function assignWordsList(wordsReturnedd){
-//      words = wordsReturnedd;
-//      return words;
-//  }
+ function assignWordsList(wordsReturnedd){
+     words = wordsReturnedd;
+     return words;
+ }
 
-//
-function assignWordsList() {
-    words = ['deliver',
-        'meddle',
-        'planes'
-        , 'permissible'
-        , 'spotty'
-        , 'impolite'
-        , 'whimsical'
-        , 'suck'
-        , 'conscious'
-        , 'lunchroom'
-        , 'pray'
-        , 'crowded'
-        , 'mind'
-        , 'frantic'
-        , 'accidental'
-        , 'historical'
-        , 'cheerful'
-        , 'substance'
-        , 'smiling'
-        , 'wide'
-        , 'damage'
-        , 'fretful'
-        , 'chilly'
-        , 'broken'
-        , 'adventurous'
-        , 'guide'
-        , 'bustling'
-        , 'petite'
-        , 'promise'
-        , 'excellent'
-        , 'pale'
-        , 'play'
-        , 'rings'
-        , 'corn'
-        , 'hospital'
-        , 'dog'
-        , 'tested'
-        , 'whip'
-        , 'dramatic'
-        , 'womanly'];
-    return words;
-}
+// Assign words per tesim qe jan perdorur
+//nuk mer parametra vetem kthen listen e poshtme
+// function assignWordsList() {
+//     words = ['deliver',
+//         'meddle',
+//         'planes'
+//         , 'permissible'
+//         , 'spotty'
+//         , 'impolite'
+//         , 'whimsical'
+//         , 'suck'
+//         , 'conscious'
+//         , 'lunchroom'
+//         , 'pray'
+//         , 'crowded'
+//         , 'mind'
+//         , 'frantic'
+//         , 'accidental'
+//         , 'historical'
+//         , 'cheerful'
+//         , 'substance'
+//         , 'smiling'
+//         , 'wide'
+//         , 'damage'
+//         , 'fretful'
+//         , 'chilly'
+//         , 'broken'
+//         , 'adventurous'
+//         , 'guide'
+//         , 'bustling'
+//         , 'petite'
+//         , 'promise'
+//         , 'excellent'
+//         , 'pale'
+//         , 'play'
+//         , 'rings'
+//         , 'corn'
+//         , 'hospital'
+//         , 'dog'
+//         , 'tested'
+//         , 'whip'
+//         , 'dramatic'
+//         , 'womanly'];
+//     return words;
+// }
 
 function plusOne(){
     //<h1 class="plus1" hidden>+1</h1>
@@ -387,11 +325,6 @@ function minusOne(){
 //Picks a random word from words array and displays
 function generateWord() {
     checkButton.disabled = false;
-    //plusOne();
-    
-    //let wordsGenerated = getRandomWords();
-    //console.log(words);
-    //plusOne()
 
     let sliderValue = slider.value;
     //console.log(slider.value)
@@ -492,47 +425,3 @@ function rotateDivToGame(){
     mainContainer.classList.remove("main-container-rotate");
     mainContainer.add("main-container");
 }
-/*
-deliver',
-    'meddle',
-    'planes'
-    ,'permissible'
-    ,'spotty'
-    ,'impolite'
-    ,'whimsical'
-    ,'suck'
-    ,'conscious'
-    ,'lunchroom'
-    ,'pray'
-    ,'crowded'
-    ,'mind'
-    ,'frantic'
-    ,'accidental'
-    ,'historical'
-    ,'cheerful'
-    ,'substance'
-    ,'smiling'
-    ,'wide'
-    ,'damage'
-    ,'fretful'
-    ,'chilly'
-    ,'broken'
-    ,'adventurous'
-    ,'guide'
-    ,'bustling'
-    ,'petite'
-    ,'promise'
-    ,'excellent'
-    ,'pale'
-    ,'play'
-    ,'rings'
-    ,'corn'
-    ,'hospital'
-    ,'dog'
-    ,'tested'
-    ,'whip'
-    ,'dramatic'
-    ,'womanly
-
-    '55555','666666','7777777','88888888','999999999'
-*/
