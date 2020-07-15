@@ -7,6 +7,8 @@
 	<title>Document</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link href="style.css?<?=filemtime("style.css")?>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	
 	<?php
             use PHPMailer\PHPMailer\PHPMailer;
@@ -18,14 +20,20 @@
             //require 'C:\xampp\htdocs\guessTheWordGame\index.php';
             if(isset($_POST['submit'])) {
                 //vlerat nga input form html
+                $emailErr = "";
                 $name = $_POST['name'];
                 $email = $_POST['email'];
+                //$email = test_input($email);
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = "Invalid email format";
+                }
                 $body = $_POST['body'];
                 $message = $_POST['message'];
 
                 
                 $mail = new PHPMailer;
                 $mail->isSMTP();
+                $mail->IsHTML(true);
                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 465;
@@ -36,7 +44,7 @@
                 $mail->setFrom('theguessthewordgame@gmail.com', 'Feedback from the Game');
                 $mail->addAddress('theguessthewordgame@gmail.com', 'guessTheWord');
                 $mail->Subject = 'guessTheWord Test';
-                $mail->Body = "Keni nje mesazh nga: $name.\nTitulli: $body\nPermbajtja: \n$message\nEmail: $email\nBruh";
+                $mail->Body = "Keni nje mesazh nga: <b><h3> $name </h3></b><br>Titulli: <b><h3> $body</h3> </b><br>Permbajtja: <br><b> <h4>$message </h4></b><br>Email: <b> <h4> $email </h4></b><br>$emailErr";
                 if($mail->send()){
                     header('Location:index.php');
                     echo "<script type='text/javascript'>alert('Faleminderit per feedback $name! From IN');</script>";
@@ -82,7 +90,7 @@
                     </div>
                         <p class="empty" hidden>FILL THE WORD PLEASE!</p>
                         <button href="#" class="checkButtonc checkButton">CHECK!</button>
-                        <button class="generateButtonc generateWord">NEW WORD</button>
+                        <button class="generateButtonc generateWord">Fjale tjeter</button>
                         <!--<button class="checkButton" type="button">CHECK!</button>-->
                         <!--<button class="generateWord" type="button">Generate!</button>-->
                     </div>
@@ -90,15 +98,19 @@
                 <div class="help-container">
                     <div class="points-container">
                         <div>
-                            <p class="p">Num of letters:</p>
+                            <p class="p">Numri i shkronjave:</p>
                             <p class="points"></p>
-                            <button class="contact-button">Contact</button>
-                            <button class="aboutus-button">About us</button>
                         </div>
                         <input type="range" min="5" max="10" value="5" class="slider" id="myRange">
+                        <div class="buttons-div">
+                        <button class="contact-button"><i class="fa fa-envelope-open"></i>Contact</button>
+                        <button class="aboutus-button"><i class="fa fa-info"></i>About</button> 
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            
             <div class="aboutus-container">
                 <div class="aboutus-content">
                     <h1 class="aboutus-text">BL3D1</h1>
@@ -115,6 +127,7 @@
                         
                         <form name="contact-form" class="contact-form" action="index.php" method = "post">
                             <div class="form-content">
+                            <h1 class = "Kontakto">Kontakto</h1>
                             <label for="name">Emri juaj: </label>
                             <input id = "name" class = "name" type="text" name="name" placeholder="Full name">
                             <label for="email">Emaili juaj: </label>

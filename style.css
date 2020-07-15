@@ -2,7 +2,13 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    
+}
 
+button{
+    padding: 0;
+    border: none;
+    background: none;
 }
 
 body{
@@ -65,13 +71,19 @@ body{
 .contact-container{
     display: none;
     margin-top: 15vh;
-    width: 100%;
+    width: 110%;
     height: 20%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     max-width: 900px;
     box-shadow: 0 0 1px black, 0 0 20px black;
+}
+
+.Kontakto{
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 20px;
 }
 
 .form-content{
@@ -130,7 +142,7 @@ body{
 .flipP{
     display: inline;
     margin-top: 450px;
-    margin-right: 20px;
+    margin-right: 70px;
     background-color: rgba(2, 2, 2, 0);
     font-size: 20px;
     font-weight: bolder;
@@ -139,9 +151,20 @@ body{
 
 .aboutus-button{
     background-color: rgba(2, 2, 2, 0);
-    font-size: 15px;
-    font-weight: bolder;
-    color: royalblue;
+    font-size: 14px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px
+    
+}
+
+.aboutus-button > i{
+    width: 15px;
+    height: 15px;
+    font-size: 20px;
+    padding: 0;
+    border: none;
+    background: none;
 }
 
 .aboutus-content{
@@ -324,7 +347,7 @@ body{
 
 .points-container{
     display: flex;
-    
+    flex-direction: row;
     width: 100%;
 }
 
@@ -419,9 +442,9 @@ body{
 }
 
 .p{
-    width: 40%;
+    width: 90%;
     height: 50%;
-    max-width: 110px;
+    max-width: 180px;
     text-align: left;
     font-weight: bold;
     font-size: 15px;
@@ -624,12 +647,46 @@ body{
     
 }
 
-
+.buttons-div{
+    display: flex;
+    justify-content: space-between;
+}
 
 .contact-button{
     background-color: rgba(2, 2, 2, 0);
-    font-size: 15px;
-    font-weight: bolder;
-    color: royalblue;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
     
+}
+
+.contact-button > i{
+    width: 15px;
+    height: 15px;
+    font-size: 20px;
+    padding: 0;
+    border: none;
+    background: none;
+    margin-right: 10px;
+    color: #998686fb;
+}
+
+.aboutus-button{
+    background-color: rgba(2, 2, 2, 0);
+    font-size: 14px;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    
+}
+
+.aboutus-button > i{
+    width: 15px;
+    height: 15px;
+    font-size: 22px;
+    padding: 0;
+    border: none;
+    padding-top: ;
+    background: none;
+    color: #998686fb;
 }

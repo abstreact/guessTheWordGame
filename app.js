@@ -287,38 +287,38 @@ fetch(api)
 
 
 //Generates random words from API 
-async function getRandomWords() {
-    //url for request
+// async function getRandomWords() {
+//     //url for request
 
-    //UNCOMMENT FOR API WORDS
-    // let numOfWords = 100;
-    // let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
+//     //UNCOMMENT FOR API WORDS
+//      let numOfWords = 500;
+//      let url = `https://random-word-api.herokuapp.com/word?number=${numOfWords}`;
 
-    // //Gets request and returns in Array at json
-    // const response = await fetch(url);
-    // const json = await response.json();
-    // //console.log(json);
-    // words = json;
+//      //Gets request and returns in Array at json
+//      const response = await fetch(url);
+//      const json = await response.json();
+//      //console.log(json);
+//      words = json;
 
-    // let wordsArray = fetch(url)
-    // .then(data =>{
-    //     return data.json();
-    // })
-    // .then(data =>{
-    //     wordsReturned = data;
-    //     console.log(wordsReturned);
-    //     console.log(wordsReturned[1]);
-    // });
-    //console.log(wordsReturned);
+//      let wordsArray = fetch(url)
+//      .then(data =>{
+//          return data.json();
+//      })
+//      .then(data =>{
+//          wordsReturned = data;
+//          console.log(wordsReturned);
+//          console.log(wordsReturned[1]);
+//      });
+//     console.log(wordsReturned);
 
-    return json;
-}
+//     return json;
+// }
 //UNCOMMENT FOR API WORDS
 //Assigns the randomGenerated words to words list
-// function assignWordsList(wordsReturnedd){
-//     words = wordsReturnedd;
-//     return words;
-// }
+//  function assignWordsList(wordsReturnedd){
+//      words = wordsReturnedd;
+//      return words;
+//  }
 
 //
 function assignWordsList() {
@@ -412,7 +412,7 @@ function generateWord() {
     wordToShuffle = wordsPicked[random];
     correctWord = wordToShuffle;
     wordToShuffle.shuffle();
-    //console.log(wordToShuffle)
+    console.log(wordToShuffle)
     for (let index = 0; index > wordToShuffle.length; index++) {
         wordToShuffle = wordToShuffle.charAt(index) + " ";
 
@@ -420,7 +420,7 @@ function generateWord() {
 
     inputContainer.innerHTML = "";
     fillAnswer(wordToShuffle);
-    fillLetters(wordToShuffle);
+    fillLetters(correctWord.shuffle());
     //wordToGuess.textContent = wordToShuffle;
     wordInput.value = "";
     //console.log(wordToDisplay)
@@ -471,6 +471,9 @@ function checkWord() {
 
 }
 //mainContainer
+
+let buttonsDiv = document.querySelector(".buttons-div");
+
 function rotateDivToAbout(){
     mainContainer.classList.add("main-container-rotate");
     aboutusContainer.classList.add("aboutus-container-rotate");
@@ -489,7 +492,6 @@ function rotateDivToGame(){
     mainContainer.classList.remove("main-container-rotate");
     mainContainer.add("main-container");
 }
-
 /*
 deliver',
     'meddle',
